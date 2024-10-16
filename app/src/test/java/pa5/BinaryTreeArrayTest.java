@@ -6,20 +6,54 @@ package pa5;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-// class BinaryTreeArrayTest {
-//     @Test
-//     void testInsert(){
-//         BinaryTreeArray tree = new BinaryTreeArray(10);
-//         tree.insert(1);
-//         tree.insert(2);
-//         tree.insert(3);
-//         tree.insert(4);
-//         tree.insert(5);
-//         tree.insert(6);
-//         tree.insert(7);
-//         tree.insert(8);
-//         tree.insert(9);
-//         tree.insert(10);
-//         assertEquals("1 2 3 4 5 6 7 8 9 10", tree.levelOrder());
-//     }
-// }
+class BinaryTreeArrayTest {
+    @Test
+    void testInsert(){
+        BinaryTreeArray tree = new BinaryTreeArray(10);
+        tree.insert(1);
+        tree.insert(2);
+        tree.insert(3);
+        tree.insert(4);
+        tree.insert(5);
+        tree.insert(6);
+        tree.insert(7);
+        tree.insert(8);
+        tree.insert(9);
+        tree.insert(10);
+        assertEquals("1 2 3 4 5 6 7 8 9 10", tree.levelOrder());
+        assertEquals("1 2 4 8 9 5 10 3 6 7 ", tree.preOrder());
+        assertEquals("8 4 9 2 10 5 1 6 3 7 ", tree.inOrder());
+        assertEquals("8 9 4 10 5 2 6 7 3 1 ", tree.postOrder());
+        
+    }
+
+    @Test
+    void testDelete(){
+        BinaryTreeArray tree = new BinaryTreeArray(10);
+        tree.insert(1);
+        tree.insert(2);
+        tree.insert(3);
+        tree.insert(4);
+        tree.insert(5);
+        tree.insert(6);
+        tree.insert(7);
+        tree.insert(8);
+        tree.insert(9);
+        tree.insert(10);
+        
+        assertEquals("1 2 3 4 5 6 7 8 9 10", tree.levelOrder());
+        assertEquals(3, tree.longestPath());
+        tree.delete(6);
+        assertEquals("1 2 3 4 5 7 8 9 10", tree.levelOrder());
+        tree.delete(1);
+        assertEquals("2 3 4 5 7 8 9 10", tree.levelOrder());
+        tree.delete(2);
+        tree.delete(3);
+        assertEquals(2, tree.longestPath());
+
+
+        
+
+        
+    }
+}
